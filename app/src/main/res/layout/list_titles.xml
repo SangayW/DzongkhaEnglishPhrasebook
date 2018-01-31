@@ -22,7 +22,7 @@
                 android:id="@+id/item_image"
                 android:layout_width="100dp"
                 android:layout_height="75dp"
-                />
+                android:clickable="true" />
 
             <TextView
                 android:id="@+id/title"
@@ -35,7 +35,7 @@
                 android:clickable="true"
                 android:text="TextView"
                 android:gravity="center"
-                android:textColor="#000000"/>
+                android:textColor="#000000" />
 
         </RelativeLayout>
 

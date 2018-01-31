@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="bt.gov.dzongkha.dzongkhaenglishphrasebook">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +22,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".UserManualActivity" />
-        <activity android:name=".FeedBackActivity.FeedBackActivity"></activity>
+        <activity
+            android:name=".CategoryDetails.CategoryDetails"
+            android:label="@string/title_activity_category_details"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

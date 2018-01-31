@@ -1,6 +1,7 @@
 package bt.gov.dzongkha.dzongkhaenglishphrasebook.Database;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import bt.gov.dzongkha.dzongkhaenglishphrasebook.CategoryDetails.CategoryDetails;
 import bt.gov.dzongkha.dzongkhaenglishphrasebook.R;
 
 /**
@@ -42,6 +44,13 @@ public class GetCategoriesAdapter extends RecyclerView.Adapter<GetCategoriesAdap
         getTitles=getTitleList.get(position);
 
         holder.category.setText(getTitles.getTitle());
+        holder.category.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(view.getContext(), CategoryDetails.class);
+                view.getContext().startActivity(intent);
+            }
+        });
         holder.imageView.setImageResource(getImageList[position]);
 
     }

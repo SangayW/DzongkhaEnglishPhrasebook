@@ -1,56 +1,60 @@
-package bt.gov.dzongkha.dzongkhaenglishphrasebook;
+package bt.gov.dzongkha.dzongkhaenglishphrasebook.CategoryDetails;
 
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
 
 import bt.gov.dzongkha.dzongkhaenglishphrasebook.FeedBackActivity.Mail;
+import bt.gov.dzongkha.dzongkhaenglishphrasebook.R;
 
-public class NavigationActivity extends AppCompatActivity
+public class CategoryDetails extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    TabLayout tabLayout;
-    ViewPager viewPager;
-    tabsPager tabsPager;
-
     String Message,Password,Email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navigation);
+        setContentView(R.layout.activity_category_details);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        tabLayout= (TabLayout) findViewById(R.id.tabs);
-        viewPager =(ViewPager) findViewById(R.id.viewpager);
-        tabsPager= new tabsPager(getSupportFragmentManager());
-        tabsPager.addFragment(new DzongkhaFragment(), "རྫོང་ཁ།");
-        tabsPager.addFragment(new EnglishFragment(), "English");
-        viewPager.setAdapter(tabsPager);
-        tabLayout.setupWithViewPager(viewPager);
 
+        Toolbar toolbar1 = (Toolbar) findViewById(R.id.toolbar1);
+        LayoutInflater li = LayoutInflater.from(this);
+        View customView = li.inflate(R.layout.custom_layout, null);
+        toolbar1.addView(customView);
+
+        ImageButton back=customView.findViewById(R.id.back);
+       // ImageButton play=customView.findViewById(R.id.playAll);
+
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -60,10 +64,6 @@ public class NavigationActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-//        MediaPlayer ring= MediaPlayer.create(NavigationActivity.this,R.raw.voice);
-//        ring.start();
-
     }
 
     @Override
@@ -79,7 +79,7 @@ public class NavigationActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.navigation, menu);
+        getMenuInflater().inflate(R.menu.category_details, menu);
         return true;
     }
 
@@ -91,9 +91,6 @@ public class NavigationActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -103,6 +100,7 @@ public class NavigationActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+
         Fragment fragment = null;
         if (id == R.id.nav_setting) {
             // Handle the camera action
@@ -123,10 +121,9 @@ public class NavigationActivity extends AppCompatActivity
         //replacing the fragment
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-           // ft.replace(R.id.content_frame, fragment);
+            // ft.replace(R.id.content_frame, fragment);
             ft.commit();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -220,4 +217,7 @@ public class NavigationActivity extends AppCompatActivity
             }
         }
     }
+
+
+
 }

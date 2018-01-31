@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="70dp"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="81dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="leave the comments"
         android:inputType="textMultiLine" />
