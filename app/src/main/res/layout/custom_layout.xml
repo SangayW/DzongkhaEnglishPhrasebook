@@ -23,7 +23,7 @@
         android:background="?attr/actionBarItemBackground"
         android:paddingTop="10dp"
         android:scaleType="centerInside"
-        android:text="Play All"
+        android:text="PLAY All"
         android:textColor="#fff"
         android:textSize="20sp" />
 
