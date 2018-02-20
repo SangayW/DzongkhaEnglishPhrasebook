@@ -59,6 +59,7 @@ public class EnglishFragment extends Fragment {
                 do
                 {
                     en_titleArrayList.add(cursor.getString(cursor.getColumnIndexOrThrow("en_title")));
+
                 } while (cursor.moveToNext());
             }
         }

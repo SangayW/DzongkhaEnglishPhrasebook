@@ -52,6 +52,7 @@ public class DzongkhaFragment extends Fragment {
         MyDatabase mdb = new MyDatabase(view.getContext());
         SQLiteDatabase db = mdb.getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from categories",null);
+
         dzo_titleArrayList=new ArrayList<String>();
         //getImageList=new ArrayList<Integer>();
 
